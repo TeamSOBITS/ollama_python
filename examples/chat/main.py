@@ -8,5 +8,5 @@ messages = [
   },
 ]
 
-response = chat('mistral', messages=messages)
+response = chat('llama3', messages=messages)
 print(response['message']['content'])

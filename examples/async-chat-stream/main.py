@@ -34,7 +34,7 @@ async def main():
 
       content_out = ''
       message = {'role': 'assistant', 'content': ''}
-      async for response in await client.chat(model='mistral', messages=messages, stream=True):
+      async for response in await client.chat(model='llama3', messages=messages, stream=True):
         if response['done']:
           messages.append(message)
 
