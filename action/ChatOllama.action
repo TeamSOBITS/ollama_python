@@ -1,0 +1,12 @@
+# ChatOllama.action
+# Goal
+string request
+string room_name
+---
+# Result
+string result
+float64 elapsed_time
+---
+# Feedback
+string wip_result
+bool end_flag
