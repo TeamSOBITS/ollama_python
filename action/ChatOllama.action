@@ -2,6 +2,7 @@
 # Goal
 string request
 string room_name
+bool is_stop
 ---
 # Result
 string result

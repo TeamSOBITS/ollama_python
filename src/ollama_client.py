@@ -5,25 +5,33 @@ import rospy
 import actionlib
 from ollama_python.msg import ChatOllamaAction
 from ollama_python.msg import ChatOllamaGoal
+from ollama_python.msg import ChatOllamaActionFeedback
+
+
+feedback_msg = ChatOllamaActionFeedback()
+def actionfeedback_callback(msg):
+    global feedback_msg
+    feedback_msg = msg
+
 
 def ollama_client():
-    print(1)
+    global feedback_msg
     action_client = actionlib.SimpleActionClient("/ollama_action", ChatOllamaAction)
-    print(2)
+    rospy.Subscriber("/ollama_action/feedback", ChatOllamaActionFeedback, actionfeedback_callback)
     action_client.wait_for_server()
-    print(3)
     goal = ChatOllamaGoal()
-    goal.room_name = "hello"
-    goal.request = "Do you know my name?"
-
+    goal.room_name = "introduce"
+    goal.request = "My team name is SOBITS"
+    goal.is_stop = False
     action_client.send_goal(goal)
-    # action_client.wait_for_result()
-    while not rospy.is_shutdown():
-    #     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    #     feedback = action_client.get_feedback()
-    #     print(feedback)
+    wip_result = ""
+    while not feedback_msg.feedback.end_flag:
+        if ((len(wip_result) != len(feedback_msg.feedback.wip_result))):
+            wip_result = feedback_msg.feedback.wip_result
+            print(wip_result)
     result = action_client.get_result()
     print(result)
+
 
 if __name__ ==  '__main__':
     try:
