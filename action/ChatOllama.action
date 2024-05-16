@@ -2,7 +2,7 @@
 # Goal
 string request
 string room_name
-bool is_stop
+bool is_service
 ---
 # Result
 string result

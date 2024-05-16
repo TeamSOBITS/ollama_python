@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import rospy
-
 import actionlib
 from ollama_python.msg import ChatOllamaAction
 from ollama_python.msg import ChatOllamaGoal
@@ -22,15 +21,19 @@ def ollama_client():
     goal = ChatOllamaGoal()
     goal.room_name = "introduce"
     goal.request = "My team name is SOBITS"
-    goal.is_stop = False
+    goal.is_service = False
     action_client.send_goal(goal)
     wip_result = ""
     while not feedback_msg.feedback.end_flag:
         if ((len(wip_result) != len(feedback_msg.feedback.wip_result))):
             wip_result = feedback_msg.feedback.wip_result
             print(wip_result)
+    action_client.wait_for_result()
     result = action_client.get_result()
-    print(result)
+    print("\n------------------RESULT--------------------")
+    print("Result: ",result.result)
+    print("\t\t\t\t\t(Elapsed Time: ", result.elapsed_time, ")")
+    print("--------------------------------------------")
 
 
 if __name__ ==  '__main__':
