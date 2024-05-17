@@ -1,3 +1,6 @@
 introduce:
   - {user     : "My name team name is SOBITS"}
   - {assistant: "I love it! SOBITS sounds like a unique and fun team name."}
+hello:
+  - {user     : "My name is Choi."}
+  - {assistant: "Nice to meet you Choi!"}

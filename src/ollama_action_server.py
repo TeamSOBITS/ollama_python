@@ -14,7 +14,7 @@ from subprocess import Popen
 class ChatAction:
     def __init__(self):
         Popen(["xterm", "-font", "r16", "-fg", "floralwhite", "-bg", "darkslateblue", "-e", "ollama", "serve"])
-        self.model_ = rospy.get_param("/ollama_server/model_name", "llama3")
+        self.model_ = rospy.get_param("/ollama_action_server/model_name", "llama3")
         self.ollama_client_ = ollama.AsyncClient()
         self.chat_messages_ = {}
         self.build_prompt()
@@ -60,7 +60,7 @@ class ChatAction:
 
     def build_prompt(self):
         self.chat_messages_ = {}
-        prompt = rospy.get_param("ollama_server/prompt", {})
+        prompt = rospy.get_param("ollama_action_server/prompt", {})
         for rn in prompt.keys():
             self.chat_messages_[str(rn)] = []
             for argument in prompt[rn]:
@@ -68,6 +68,6 @@ class ChatAction:
 
 
 if __name__ == '__main__':
-    rospy.init_node('ollama_server')
+    rospy.init_node('ollama_action_server')
     chat_action = ChatAction()
     rospy.spin()

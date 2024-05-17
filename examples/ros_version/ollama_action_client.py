@@ -38,7 +38,7 @@ def ollama_client():
 
 if __name__ ==  '__main__':
     try:
-        rospy.init_node('ollama_client')
+        rospy.init_node('ollama_action_client')
         ollama_client()
     except rospy.ROSInterruptException:
         pass
