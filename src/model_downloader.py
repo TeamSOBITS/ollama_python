@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 #coding:utf-8
+import rospy
 import os
 import rospkg
 import time
 import ollama
 import tkinter as Tkinter
 from subprocess import Popen
+
+
 
 class ModelDownloader():
     def __init__(self):
@@ -18,6 +21,8 @@ class ModelDownloader():
         self.reset_models_info()
         rospack = rospkg.RosPack()
         self.iconfile = Tkinter.PhotoImage(file=rospack.get_path("ollama_python")+"/img/icon.png")
+        self.width = self.tk.winfo_screenwidth()
+        self.height = self.tk.winfo_screenheight()
         self.tk.call('wm', 'iconphoto', self.tk._w, self.iconfile)
     
     def reset_models_info(self):
@@ -45,38 +50,30 @@ class ModelDownloader():
 
     def create_gui(self):
         # GUI windowの大きさを定義する
-        geometry_x = str(700)
+        geometry_x = 700
         if (len(self.can_download_models_info) < 2):
-            geometry_y = str(30 * 2)
+            geometry_y = 30 * 2
         else:
             geometry_y = 30 * len(self.can_download_models_info)
         # "window width x window height + position right + position down"
-        self.tk.geometry(("%sx%s+0+0")%(geometry_x, geometry_y))
+        self.tk.geometry(("%sx%s+%s+%s")%(str(geometry_x), str(geometry_y), str((self.width - geometry_x)//2), str((self.height - geometry_y)//2)))
         
         for i, container_info in enumerate(self.can_download_models_info):
-            container_name = container_info
-            
-            # コンテナの実行中の場合は"restart"，"stop"，"exec"というボタンを表示させる
             if self.download_models_flag[i]:
-                button = Tkinter.Button(self.tk, width=4, text="      ", command=self.button_clicked_callback("dummy" , i)).place(x=100, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="delete", command=self.button_clicked_callback("delete", i)).place(x=160, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="copy"  , command=self.button_clicked_callback("copy"  , i)).place(x=220, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="push"  , command=self.button_clicked_callback("push"  , i)).place(x=280, y=i*30)
-
+                Tkinter.Button(self.tk, width=9, text="delete"   , command=lambda i=i: self.button_clicked_callback("delete", i)).place(x=150, y=i*30)
+                Tkinter.Button(self.tk, width=9, text="copy"     , command=lambda i=i: self.button_clicked_callback("copy"  , i)).place(x=250, y=i*30)
+                Tkinter.Button(self.tk, width=9, text="push"     , command=lambda i=i: self.button_clicked_callback("push"  , i)).place(x=350, y=i*30)
             else:
-                button = Tkinter.Button(self.tk, width=4, text="pull"  , command=self.button_clicked_callback("pull"  , i)).place(x=100, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="      ", command=self.button_clicked_callback("dummy" , i)).place(x=160, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="      ", command=self.button_clicked_callback("dummy" , i)).place(x=220, y=i*30)
-                button = Tkinter.Button(self.tk, width=4, text="      ", command=self.button_clicked_callback("dummy" , i)).place(x=280, y=i*30)
+                Tkinter.Button(self.tk, width=34, text="download", command=lambda i=i: self.button_clicked_callback("pull"  , i)).place(x=150, y=i*30)
 
-            label = Tkinter.Label(text=container_name, font=("",15)).place(x=340, y=i*30)
+            Tkinter.Label(text=container_info, font=("", 15)).place(x=460, y=i*30)
 
 	    #GUI再起動用のボタンを定義
-        btn = Tkinter.Button(self.tk, width=3, text="refresh", command=self.refresh_gui)
+        btn = Tkinter.Button(self.tk, width=6, text="refresh", command=self.refresh_gui)
         btn.place(x=0, y=0)
         
         #GUI停止用のボタンを定義
-        btn = Tkinter.Button(self.tk, width=3, text="close", command=self.quit_gui)
+        btn = Tkinter.Button(self.tk, width=6, text="close", command=self.quit_gui)
         btn.place(x=0, y=30)
 
         self.tk.title("[Download] ollama models GUI")
@@ -111,9 +108,18 @@ class ModelDownloader():
         self.tk.quit()
         self.tk.destroy()
 
-   
+    # def get_window_size():
+    #     # ウィンドウを表示せずに作成する
+    #     # self.tk.withdraw()
+    #     # ウィンドウのサイズを取得する
+    #     width = self.tk.winfo_screenwidth()
+    #     height = self.tk.winfo_screenheight()
+    #     return width, height
+
+
 
 def main():
+    rospy.init_node("model_downloader")
     md = ModelDownloader()
     md.create_gui()
 
