@@ -1,13 +1,13 @@
 # ChatOllama.action
 # Goal
-string request
-string room_name
-bool is_service
+string request        # リクエストメッセージ
+string room_name      # 部屋名指定
+bool is_service       # Feedbackを送るかどうか
 ---
 # Result
-string result
-float64 elapsed_time
+string result         # 返答メッセージ
+float64 elapsed_time  # 返答まで何秒かかったか
 ---
 # Feedback
-string wip_result
-bool end_flag
+string wip_result     # 途中経過のメッセージ
+bool end_flag         # 途中経過の送信がが終了したかどうか

@@ -8,4 +8,6 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 pip install ollama
 
+sudo apt install xterm
+
 echo "╚══╣ Install: Ollama Python (FINISHED) ╠══╝"

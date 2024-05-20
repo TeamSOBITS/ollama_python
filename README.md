@@ -63,7 +63,7 @@
 | Python | 3.8 |
 
 > [!NOTE]
-> `Ubuntu`や`ROS`のインストール方法に関しては，[SOBITS Manual](https://github.com/TeamSOBITS/sobits_manual#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)に参照してください．
+> `Ubuntu`や`ROS`のインストール方法に関しては，[SOBITS Manual](https://github.com/TeamSOBITS/sobits_manual#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)を参照してください．
 
 
 ### インストール方法
@@ -103,7 +103,55 @@
 
 ### モデルのダウンロード
 
-1. 
+1. [model_download.launch](/launch/model_download.launch)を起動する
+   ```sh
+   $ roslaunch ollama_python model_download.launch
+   ```
+2. GUIのから使いたいモデルをダウンロードする
+<div align="center">
+  <img src="img/download_demo.png" height="420">
+</div>
+  モデルのダウンロードは[download]をクリックしてください．\
+  モデルはこれが全てではなく，[こちら](https://ollama.com/library)にあるものから抜選しています．(全て書くとGUIが膨大になってしまうのと，公式からの更新に対応できないため)\
+  もしGUIにないものをdownloadしたい場合は，[/ollama/src/model_downloader.py](/src/model_downloader.py)の19行目にあるリストに追加してください．\
+  既にモデルがダウンロードされている場合は削除([delete])，コピー([copy])，push([push])することができます．\
+  ※モデルのダウンロードにはしばらく時間がかかります．GUIが更新されるまで待っていてください
+
+> [!WARNING]
+> 詳細や細かい操作方法などについては[フォーク元のgithubのREADME](https://github.com/ollama/ollama-python)や[ollama自体のgithub](https://github.com/ollama/ollama)などを参照してください．
+
+
+### 会話をする
+1. モデルを設定する
+  [ollama.launch](/launch/ollama.launch)にあるmodel_nameを上の「モデルのダウンロード」でダウンロードした好きなモデルにする．\
+  以下は，llama3を指定した一例である．\
+   ```sh
+    <param name="model_name" value="llama3"/>
+   ```
+2. Serverを起動する
+   ```sh
+   $ roslaunch ollama_python ollama.launch
+   ```
+   これは返答文が生成されるまでの途中経過を知れるように，Actionlib通信を用いているため，ActionServerを立ち上げている．
+3. [任意]実際に呼び出してみる
+  - Actionlib通信(途中経過から得るモード)で呼び出す
+    ```sh
+     $ rosrun ollama_python ollama_action_client.py
+    ```
+  - Service通信(結果だけ得るモード)で呼び出す
+    ```sh
+     $ rosrun ollama_python ollama_service_client.py
+    ```
+  そこで，room_name >>> をなんでもいいですが，ここではdefaultとしてみましょう．\
+  requestになにか打ち込んでみましょう．ここでは一例として"Hello!"と送ってみました．
+<div align="center">
+  <img src="img/download_demo.png" height="420">
+</div>
+
+
+> [!WARNING]
+> 事前プロンプトの設定やroom_nameについての詳細は[こちら](/README_DETAILS.md)を確認してください．
+
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 

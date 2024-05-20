@@ -81,19 +81,20 @@ class ModelDownloader():
 
 
     def button_clicked_callback(self, mode, id):
-        def inner():
-            if mode != "dummy":
-                if mode == "delete":
-                    ollama.delete(str(self.can_download_models_info[id]))
-                elif mode == "copy":
-                    ollama.copy(str(self.can_download_models_info[id]), str(os.environ.get("USER")) + "/" + str(self.can_download_models_info[id]))
-                elif mode == "pull":
-                    ollama.pull(str(self.can_download_models_info[id]))
-                elif mode == "push":
-                    ollama.push(str(self.can_download_models_info[id]))
-                self.refresh_gui()
-        return inner 
-
+        if mode != "dummy":
+            if mode == "delete":
+                ollama.delete(str(self.can_download_models_info[id]))
+            elif mode == "copy":
+                print("copy")
+                ollama.copy(str(self.can_download_models_info[id]), str(os.environ.get("USER")) + "/" + str(self.can_download_models_info[id]))
+                print("copy")
+            elif mode == "pull":
+                ollama.pull(str(self.can_download_models_info[id]))
+            elif mode == "push":
+                print("push")
+                ollama.push(str(self.can_download_models_info[id]))
+                print("push")
+            self.refresh_gui()
 
     def refresh_gui(self):
         self.can_download_models_info = []
