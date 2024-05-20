@@ -107,7 +107,7 @@
    ```sh
    $ roslaunch ollama_python model_download.launch
    ```
-2. GUIのから使いたいモデルをダウンロードする
+2. GUIのから使いたいモデルをダウンロードする\
   モデルのダウンロードは[download]をクリックしてください．\
   モデルはこれが全てではなく，[こちら](https://ollama.com/library)にあるものから抜選しています．(全て書くとGUIが膨大になってしまうのと，公式からの更新に対応できないため)\
   もしGUIにないものをdownloadしたい場合は，[/ollama/src/model_downloader.py](/src/model_downloader.py)の19行目にあるリストに追加してください．\
