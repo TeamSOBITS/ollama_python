@@ -144,6 +144,7 @@
     ```
   そこで，room_name >>> をなんでもいいですが，ここではdefaultとしてみましょう．\
   requestになにか打ち込んでみましょう．ここでは一例として"Hello!"と送ってみました．
+  ※CPUでは処理が遅くなってしまうため，Actionlibで途中経過を見ながら待機していたほうがいいかもしれません．
   <!-- <div align="center">
     <img src="img/download_demo.png" height="420">
   </div> -->
