@@ -82,7 +82,7 @@ $ rosrun ollama_python ollama_action_client.py
 # or
 $ rosrun ollama_python ollama_service_client.py
 ```
-そこでroom_nameをdefaultにして，requestに「Do you know my name?」と打ってみてください．\
+そこでroom_nameをdefaultにして，requestに「Do you know my name?」と打ってみてください．
 
 <div align="center">
 <img src="img/default_result.png" height="420">
@@ -90,7 +90,7 @@ $ rosrun ollama_python ollama_service_client.py
 
 defaultという部屋は事前プロンプトにもなく今定義した部屋なので，返答は「わかりません」になったと思います．\
 ここでもう一度クライアントを実行してください．\
-今度はroom_nameをsobit_miniにして，同様にrequestを「Do you know my name?」としてみてください．\
+今度はroom_nameをsobit_miniにして，同様にrequestを「Do you know my name?」としてみてください．
 
 <div align="center">
 <img src="img/sobit_mini_result.png" height="420">
