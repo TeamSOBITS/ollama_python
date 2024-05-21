@@ -124,7 +124,7 @@
 ### 会話をする
 1. モデルを設定する
   [ollama.launch](/launch/ollama.launch)にあるmodel_nameを上の「モデルのダウンロード」でダウンロードした好きなモデルにする．\
-  以下は，llama3を指定した一例である．\
+  以下は，llama3を指定した一例である．
    ```sh
     <param name="model_name" value="llama3"/>
    ```
@@ -145,9 +145,9 @@
   そこで，room_name >>> をなんでもいいですが，ここではdefaultとしてみましょう．\
   requestになにか打ち込んでみましょう．ここでは一例として"Hello!"と送ってみました．\
   ※CPUでは処理が遅くなってしまうため，Actionlibで途中経過を見ながら待機していたほうがいいかもしれません．
-  <!-- <div align="center">
-    <img src="img/download_demo.png" height="420">
-  </div> -->
+  <div align="center">
+    <img src="img/say_hello_demo.png" height="420">
+  </div>
 
 
 > [!WARNING]
