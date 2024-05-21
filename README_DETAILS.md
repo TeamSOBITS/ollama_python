@@ -84,7 +84,7 @@ $ rosrun ollama_python ollama_service_client.py
 ```
 そこでroom_nameをdefaultにして，requestに「Do you know my name?」と打ってみてください．
 
-<div align="center">
+<div align="left">
 <img src="img/default_result.png" height="420">
 </div>
 
