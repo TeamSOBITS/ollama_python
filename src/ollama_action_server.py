@@ -34,13 +34,11 @@ class ChatAction:
                 return elapsed_time, message['content']
 
             content = response['message']['content']
+            message['content'] += content
             if not service_flag_:
                 print(content, end='', flush=True)
                 feedback = ChatOllamaFeedback(wip_result=message['content'], end_flag=False)
                 self.action_server_.publish_feedback(feedback)
-
-            message['content'] += content
-
 
     def chat_ollama_callback(self, goal):
         print("===============================================")
