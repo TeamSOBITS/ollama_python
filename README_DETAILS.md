@@ -1,4 +1,4 @@
-<sub>[READMEへ戻る](README_en.md)</sub>
+<sub>[READMEへ戻る](README.md)</sub>
 
 ## 詳細
 
