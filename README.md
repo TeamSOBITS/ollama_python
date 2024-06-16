@@ -45,7 +45,7 @@
 
 本レポジトリは，オフラインのローカルのみで大規模言語モデル(LLM:Large Language Models)を動かすことができるパッケージです．\
 処理速度はCPU/GPUで変わりますが，モデルによってはCPUでも問題なく動きます．\
-特に，大規模言語モデルは1単語ずつ返答が構築されていく仕組みのため，呼び出しから返答までの間に途中経過が存在することから，ROSのActionlib通信を用いる．
+特に，大規模言語モデルは1単語ずつ返答が構築されていく仕組みのため，呼び出しから返答までの間に途中経過が存在することから，ROSのActionlib通信を用います．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -119,11 +119,16 @@
    $ roslaunch ollama_python model_download.launch
    ```
 2. GUIのから使いたいモデルをダウンロードする\
-  モデルのダウンロードは[download]をクリックしてください．\
-  モデルはこれが全てではなく，[こちら](https://ollama.com/library)にあるものから抜選しています．(全て書くとGUIが膨大になってしまうのと，公式からの更新に対応できないため)\
-  もしGUIにないものをdownloadしたい場合は，[/ollama/scripts/model_downloader.py](scripts/model_downloader.py)の19行目にあるリストに追加してください．\
-  既にモデルがダウンロードされている場合は削除([delete])，コピー([copy])，push([push])することができます．\
-  ※モデルのダウンロードにはしばらく時間がかかります．GUIが更新されるまで待っていてください
+  モデルのダウンロードは[download]をクリックしてください．
+
+> [!NOTE]
+> モデルはこれが全てではなく，[こちら](https://ollama.com/library)にあるものから抜選しています．(全て書くとGUIが膨大になってしまうのと，公式からの更新に対応できないため)\
+
+もしGUIにないものをdownloadしたい場合は，[model_downloader.py](scripts/model_downloader.py)の19行目にあるリストに追加してください．\
+既にモデルがダウンロードされている場合は削除([delete])，コピー([copy])，push([push])することができます．
+
+> [!NOTE]
+> モデルのダウンロードにはしばらく時間がかかります．GUIが更新されるまで待っていてください
 
 <div align="center">
   <img src="img/download_demo.png" height="420">
@@ -138,7 +143,7 @@
 ### 会話をする
 
 1. モデルを設定する
-  [ollama.launch](/launch/ollama.launch)にあるmodel_nameを上の「モデルのダウンロード」でダウンロードした好きなモデルにする．\
+  [ollama.launch](launch/ollama.launch)にあるmodel_nameを上の「モデルのダウンロード」でダウンロードした好きなモデルにする．\
   以下は，llama3を指定した一例である．
    ```sh
     <param name="model_name" value="llama3"/>
@@ -166,7 +171,7 @@
 </div>
 
 > [!WARNING]
-> 事前プロンプトの設定や`room_name`についての詳細は[こちら](/README_DETAILS.md)を確認してください．
+> 事前プロンプトの設定や`room_name`についての詳細は[こちら](README_DETAILS.md)を確認してください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -201,5 +206,5 @@
 [stars-url]: https://github.com/TeamSOBITS/ollama_python/stargazers
 [issues-shield]: https://img.shields.io/github/issues/TeamSOBITS/ollama_python.svg?style=for-the-badge
 [issues-url]: https://github.com/TeamSOBITS/ollama_python/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/TeamSOBITS/ollama_python.svg?style=for-the-badge
 [license-url]: LICENSE
