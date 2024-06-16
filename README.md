@@ -121,7 +121,7 @@
 2. GUIのから使いたいモデルをダウンロードする\
   モデルのダウンロードは[download]をクリックしてください．\
   モデルはこれが全てではなく，[こちら](https://ollama.com/library)にあるものから抜選しています．(全て書くとGUIが膨大になってしまうのと，公式からの更新に対応できないため)\
-  もしGUIにないものをdownloadしたい場合は，[/ollama/src/model_downloader.py](src/model_downloader.py)の19行目にあるリストに追加してください．\
+  もしGUIにないものをdownloadしたい場合は，[/ollama/scripts/model_downloader.py](scripts/model_downloader.py)の19行目にあるリストに追加してください．\
   既にモデルがダウンロードされている場合は削除([delete])，コピー([copy])，push([push])することができます．\
   ※モデルのダウンロードにはしばらく時間がかかります．GUIが更新されるまで待っていてください
 
