@@ -1,7 +1,9 @@
 <!-- ollama.launch -->
 <launch>
+    <arg name="model_name" default="llama3"/>
+
     <node name="ollama_action_server" pkg="ollama_python" type="ollama_action_server.py" output="screen" >
-        <param name="model_name" value="llama3"/>
+        <param name="model_name" value="$(arg model_name)"/>
         <rosparam file="$(find ollama_python)/prompt/base_prompt.yaml" command="load" ns="prompt"/>
     </node>
 </launch>
