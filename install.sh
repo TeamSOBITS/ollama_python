@@ -2,12 +2,12 @@
 
 echo "╔══╣ Install: Ollama Python (STARTING) ╠══╗"
 
-sudo apt-get update
 
 curl -fsSL https://ollama.com/install.sh | sh
 
-pip install ollama
+python3 -m pip install ollama
 
-sudo apt install xterm
+sudo apt-get update
+sudo apt install -y xterm
 
 echo "╚══╣ Install: Ollama Python (FINISHED) ╠══╝"
