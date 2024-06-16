@@ -1,3 +1,5 @@
+<sub>[Go back to README](README_en.md)</sub>
+
 ## Details
 
 ### Message info
@@ -25,7 +27,7 @@ bool end_flag         # Feedback conclusion flag
 
 Here is an example of the state:
 
-```console
+```yaml
 # Room A
 USER : Tell me about SOBITS
 GPT : As a large language model, I don't have knowledge about specific words.
@@ -41,7 +43,7 @@ GPT : The operation of dividing by zero is not defined mathematically, so it has
 
 Suppose there are two rooms, A and B. If the user asks "What is SOBITS?" in these two rooms, of course GPT can answer in room A. Here is an example of the answer:
 
-```console
+```yaml
 # Room A
 USER : What is SOBITS?
 GPT : SOBITS is what you taught me earlier. It was a joint team of Tsui Laboratory and Hagiwara Laboratory, right? Was there any mistake?
@@ -61,7 +63,7 @@ Basically, you can define it in [base_prompt.yaml](prompt/base_prompt.yaml).
 
 Those are just an example, but I defined it as follows.
 
-```console
+```yaml
 # yaml file where you can define a conversation in advance
 sobit_mini:                                         # In a room called sobit_mini...
 - {user     : "My name is SOBIT MINI."}             # If the User side says "My name is SOBIT MINI",...

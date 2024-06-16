@@ -127,14 +127,14 @@
 もしGUIにないものをdownloadしたい場合は，[model_downloader.py](scripts/model_downloader.py)の19行目にあるリストに追加してください．\
 既にモデルがダウンロードされている場合は削除([delete])，コピー([copy])，push([push])することができます．
 
-> [!NOTE]
+> [!WARNING]
 > モデルのダウンロードにはしばらく時間がかかります．GUIが更新されるまで待っていてください
 
 <div align="center">
   <img src="img/download_demo.png" height="420">
 </div>
 
-> [!WARNING]
+> [!NOTE]
 > 詳細や細かい操作方法などについては[元ollama-python](https://github.com/ollama/ollama-python)や[ollama](https://github.com/ollama/ollama)などを参照してください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>

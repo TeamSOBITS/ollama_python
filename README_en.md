@@ -128,14 +128,14 @@ Click [download] to download the model.
 If you want to download a model that is not in the GUI, please add it to the list on line 19 of [model_downloader.py](scripts/model_downloader.py).
 If the model has already been downloaded, you can delete ([delete]), copy ([copy]), or push ([push]) it.
 
-> [!NOTE]
+> [!WARNING]
 > Downloading the model will take some time. Please wait until the GUI is updated.
 
 <div align="center">
   <img src="img/download_demo.png" height="420">
 </div>
 
-> [!INFO]
+> [!NOTE]
 > For details and specific operation methods, please refer to the [original Ollama Python](https://github.com/ollama/ollama-python) and [ollama](https://github.com/ollama/ollama) github.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
