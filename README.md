@@ -77,29 +77,29 @@
 ### インストール方法
 
 1. ROSの`src`フォルダに移動します．
-   ```sh
-   $ roscd
-   # もしくは，"cd ~/catkin_ws/"へ移動．
-   $ cd src/
-   ```
+    ```console
+    $ roscd
+    # もしくは，"cd ~/catkin_ws/"へ移動．
+    $ cd src/
+    ```
 2. 本レポジトリをcloneします．
-   ```sh
-   $ git clone https://github.com/TeamSOBITS/ollama_python
-   ```
+    ```console
+    $ git clone https://github.com/TeamSOBITS/ollama_python
+    ```
 3. レポジトリの中へ移動します．
-   ```sh
-   $ cd ollama_python/
-   ```
+    ```console
+    $ cd ollama_python/
+    ```
 4. 依存パッケージをインストールします．
-   ```sh
-   $ bash install.sh
-   ```
+    ```console
+    $ bash install.sh
+    ```
 5. パッケージをコンパイルします．
-   ```sh
-   $ roscd
-   # もしくは，"cd ~/catkin_ws/"へ移動．
-   $ catkin_make
-   ```
+    ```console
+    $ roscd
+    # もしくは，"cd ~/catkin_ws/"へ移動．
+    $ catkin_make
+    ```
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -115,9 +115,9 @@
 ### モデルのダウンロード
 
 1. [model_download.launch](/launch/model_download.launch)を起動する
-   ```sh
-   $ roslaunch ollama_python model_download.launch
-   ```
+    ```console
+    $ roslaunch ollama_python model_download.launch
+    ```
 2. GUIのから使いたいモデルをダウンロードする\
   モデルのダウンロードは[download]をクリックしてください．
 
@@ -135,42 +135,43 @@
 </div>
 
 > [!WARNING]
-> 詳細や細かい操作方法などについては[フォーク元のgithubのREADME](https://github.com/ollama/ollama-python)や[ollama自体のgithub](https://github.com/ollama/ollama)などを参照してください．
+> 詳細や細かい操作方法などについては[元ollama-python](https://github.com/ollama/ollama-python)や[ollama](https://github.com/ollama/ollama)などを参照してください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
 
 ### 会話をする
 
-1. モデルを設定する
-  [ollama.launch](launch/ollama.launch)にあるmodel_nameを上の「モデルのダウンロード」でダウンロードした好きなモデルにする．\
-  以下は，llama3を指定した一例である．
-   ```sh
-    <param name="model_name" value="llama3"/>
-   ```
-2. Serverを起動する
-   ```sh
-   $ roslaunch ollama_python ollama.launch
-   ```
-   これは返答文が生成されるまでの途中経過を知れるように，Actionlib通信を用いているため，ActionServerを立ち上げている．
-3. [任意]実際に呼び出してみる
-  - Actionlib通信(途中経過から得るモード)で呼び出す
-    ```sh
-     $ rosrun ollama_python ollama_action_client.py
+1. [ollama.launch](launch/ollama.launch)にある`model_name`を上の[モデルのダウンロード](#モデルのダウンロード)でダウンロードしたモデルにします．
+以下は，llama3を指定した一例です．
+    ```xml
+    <arg name="model_name" default="llama3"/>
     ```
-  - Service通信(結果だけ得るモード)で呼び出す
-    ```sh
-     $ rosrun ollama_python ollama_service_client.py
+2. Serverを起動します．
+Actionlib通信を用いているため，返答文が生成されるまでの途中経過を確認できます．
+    ```console
+    $ roslaunch ollama_python ollama.launch
     ```
-  そこで，`room_name` >>> をなんでもいいですが，ここではdefaultとしてみましょう．\
-  requestになにか打ち込んでみましょう．ここでは一例として"Hello!"と送ってみました．\
-  ※CPUでは処理が遅くなってしまうため，Actionlibで途中経過を見ながら待機していたほうがいいかもしれません．
+3. [任意]実際に呼び出してみましょう．
+    - Actionlib通信(途中経過から得るモード)で呼び出す
+      ```console
+      $ rosrun ollama_python ollama_action_client.py
+      ```
+    - Service通信(結果だけ得るモード)で呼び出す
+      ```console
+      $ rosrun ollama_python ollama_service_client.py
+      ```
+そこで，`room_name` >>> をなんでもいいですが，ここでは`default`としてみましょう．
+`request`になにか打ち込んでみましょう．ここでは一例として`Hello!`と送ってみました．
 
 <div align="center">
   <img src="img/say_hello_demo.png" height="420">
 </div>
 
 > [!WARNING]
+> CPUでは処理が遅くなってしまうため，Actionlibで途中経過を見ながら待機していたほうがいいかもしれません．
+
+> [!NOTE]
 > 事前プロンプトの設定や`room_name`についての詳細は[こちら](README_DETAILS.md)を確認してください．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
