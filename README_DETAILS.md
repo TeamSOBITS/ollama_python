@@ -69,12 +69,12 @@ GPT : SOBITSについて私は知識を持ち合わせていません．数学�
 
 ```yaml
 # 事前に会話を定義しておくことができるyamlファイル
-sobit_mini:                                             # sobit_miniという部屋では．．．
+sobit_mini:                                         # sobit_miniという部屋では．．．
 - {user     : "My name is SOBIT MINI."}             # 「私の名前はSOBIT MINIです」とUser側から言ったら，，，  
 - {assistant: "Nice to meet you SOBIT MINI!"}       # 「よろしくね，SOBIT MINIさん」と言っている会話を予め定義しているので
-                                                # sobit_miniという部屋を指定すればこの続きから会話できます
+                                                    # sobit_miniという部屋を指定すればこの続きから会話できます
 
-team_introduce:               # team_introduceという別の部屋も準備している
+team_introduce:                                     # team_introduceという別の部屋も準備している
 - {user     : "Our team name is SOBITS."}
 - {assistant: "I love it! SOBITS sounds like a unique and fun team name."}
 - {user     : "SOBITS consists of about 30 people."}
