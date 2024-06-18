@@ -4,7 +4,7 @@
 
 ### Message info
 
-Actionlib通信にて呼び出すメッセージの構成は以下のようになっています．
+The structure of the message called in Actionlib communication is as follows.
 ```sh
 # Goal
 string request        # Request message
