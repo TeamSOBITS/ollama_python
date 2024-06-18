@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.10.2)
 project(ollama_python)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -8,7 +8,7 @@ project(ollama_python)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  # roscpp
   rospy
   std_msgs
   message_generation
